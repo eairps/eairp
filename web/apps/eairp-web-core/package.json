@@ -1,0 +1,61 @@
+{
+  "name": "eairp-web-core",
+  "version": "1.6.5",
+  "homepage": "https://github.com/eairps/eairp",
+  "bugs": "https://github.com/eairps/eairp/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eairps/eairp.git",
+    "directory": "apps/eairp-web-core"
+  },
+  "license": "Apache-2.0",
+  "author": {
+    "name": "EAIRP Team",
+    "email": "geekzow@gmail.com",
+    "url": "https://github.com/eairps/eairp"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "pnpm vite build --mode production",
+    "build:analyze": "pnpm vite build --mode analyze",
+    "dev": "pnpm vite --mode development",
+    "preview": "vite preview",
+    "typecheck": "vue-tsc --noEmit --skipLibCheck"
+  },
+  "imports": {
+    "#/*": "./src/*"
+  },
+  "dependencies": {
+    "@ant-design/icons-vue": "catalog:",
+    "@axolo/tree-array": "catalog:",
+    "@codemirror/lang-json": "catalog:",
+    "@codemirror/language": "catalog:",
+    "@codemirror/legacy-modes": "catalog:",
+    "@iconify/vue": "catalog:",
+    "@uiw/codemirror-theme-github": "catalog:",
+    "@vben/access": "workspace:*",
+    "@vben/common-ui": "workspace:*",
+    "@vben/constants": "workspace:*",
+    "@vben/hooks": "workspace:*",
+    "@vben/icons": "workspace:*",
+    "@vben/layouts": "workspace:*",
+    "@vben/locales": "workspace:*",
+    "@vben/plugins": "workspace:*",
+    "@vben/preferences": "workspace:*",
+    "@vben/request": "workspace:*",
+    "@vben/stores": "workspace:*",
+    "@vben/styles": "workspace:*",
+    "@vben/types": "workspace:*",
+    "@vben/utils": "workspace:*",
+    "@vueuse/core": "catalog:",
+    "@wangeditor-next/editor": "catalog:",
+    "@wangeditor-next/editor-for-vue": "catalog:",
+    "ant-design-vue": "catalog:",
+    "dayjs": "catalog:",
+    "pinia": "catalog:",
+    "remeda": "catalog:",
+    "vue": "catalog:",
+    "vue-codemirror": "catalog:",
+    "vue-router": "catalog:"
+  }
+}

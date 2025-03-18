@@ -31,9 +31,9 @@ const defaultPreferences: Preferences = {
     styleType: 'normal',
   },
   copyright: {
-    companyName: 'Simple Admin',
-    companySiteLink: 'https://doc.ryansu.tech/zh/',
-    date: '2024',
+    companyName: 'EAIRP',
+    companySiteLink: 'https://github.com/eairps/eairp',
+    date: '2025',
     enable: true,
     icp: '',
     icpLink: '',

@@ -1,12 +1,8 @@
 {
   "folders": [
     {
-      "name": "@vben/backend-mock",
-      "path": "apps/backend-mock",
-    },
-    {
-      "name": "@vben/simple-admin-core",
-      "path": "apps/simple-admin-core",
+      "name": "eairp-web-core",
+      "path": "apps/eairp-web-core",
     },
     {
       "name": "@vben/commitlint-config",
