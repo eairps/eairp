@@ -1,109 +1,125 @@
-import { resolve } from 'node:path';
+import type { CSSOptions, UserConfig } from 'vite';
 
-import dayjs from 'dayjs';
-import { readPackageJSON } from 'pkg-types';
-import { defineConfig, loadEnv, mergeConfig, type UserConfig } from 'vite';
+import type { DefineApplicationOptions } from '../typing';
 
-import { createPlugins } from '../plugins';
-import { generateModifyVars } from '../utils/modifyVars';
-import { commonConfig } from './common';
+import path, { relative } from 'node:path';
 
-interface DefineOptions {
-  overrides?: UserConfig;
-  options?: {
-    //
-  };
-}
+import { findMonorepoRoot } from '@vben/node-utils';
 
-function defineApplicationConfig(defineOptions: DefineOptions = {}) {
-  const { overrides = {} } = defineOptions;
+import { NodePackageImporter } from 'sass';
+import { defineConfig, loadEnv, mergeConfig } from 'vite';
 
-  return defineConfig(async ({ command, mode }) => {
+import { defaultImportmapOptions, getDefaultPwaOptions } from '../options';
+import { loadApplicationPlugins } from '../plugins';
+import { loadAndConvertEnv } from '../utils/env';
+import { getCommonConfig } from './common';
+
+function defineApplicationConfig(userConfigPromise?: DefineApplicationOptions) {
+  return defineConfig(async (config) => {
+    const options = await userConfigPromise?.(config);
+    const { appTitle, base, port, ...envConfig } = await loadAndConvertEnv();
+    const { command, mode } = config;
+    const { application = {}, vite = {} } = options || {};
     const root = process.cwd();
     const isBuild = command === 'build';
-    const { VITE_PUBLIC_PATH, VITE_USE_MOCK, VITE_BUILD_COMPRESS, VITE_ENABLE_ANALYZE } = loadEnv(
-        mode,
-        root,
-    );
+    const env = loadEnv(mode, root);
 
-    const defineData = await createDefineData(root);
-    const plugins = await createPlugins({
+    const plugins = await loadApplicationPlugins({
+      archiver: true,
+      archiverPluginOptions: {},
+      compress: false,
+      compressTypes: ['brotli', 'gzip'],
+      devtools: true,
+      env,
+      extraAppConfig: true,
+      html: true,
+      i18n: true,
+      importmapOptions: defaultImportmapOptions,
+      injectAppLoading: true,
+      injectMetadata: true,
       isBuild,
-      root,
-      enableAnalyze: VITE_ENABLE_ANALYZE === 'true',
-      enableMock: VITE_USE_MOCK === 'true',
-      compress: VITE_BUILD_COMPRESS,
+      license: true,
+      mode,
+      nitroMock: !isBuild,
+      nitroMockOptions: {},
+      print: !isBuild,
+      printInfoMap: {
+        'Vben Admin Docs': 'https://doc.vben.pro',
+      },
+      pwa: true,
+      pwaOptions: getDefaultPwaOptions(appTitle),
+      vxeTableLazyImport: true,
+      ...envConfig,
+      ...application,
     });
 
-    const pathResolve = (pathname: string) => resolve(root, '.', pathname);
-    const timestamp = new Date().getTime();
+    const { injectGlobalScss = true } = application;
+
     const applicationConfig: UserConfig = {
-      base: VITE_PUBLIC_PATH,
-      resolve: {
-        alias: [
-          {
-            find: 'vue-i18n',
-            replacement: 'vue-i18n/dist/vue-i18n.cjs.js',
-          },
-          // @/xxxx => src/xxxx
-          {
-            find: /@\//,
-            replacement: pathResolve('src') + '/',
-          },
-          // #/xxxx => types/xxxx
-          {
-            find: /#\//,
-            replacement: pathResolve('types') + '/',
-          },
-        ],
-      },
-      define: defineData,
+      base,
       build: {
-        target: 'es2015',
-        cssTarget: 'chrome80',
         rollupOptions: {
           output: {
-            // 入口文件名
-            entryFileNames: `assets/entry/[name]-[hash]-${timestamp}.js`,
-            manualChunks: {
-              vue: ['vue', 'pinia', 'vue-router'],
-              antd: ['ant-design-vue', '@ant-design/icons-vue'],
-            },
+            assetFileNames: '[ext]/[name]-[hash].[ext]',
+            chunkFileNames: 'js/[name]-[hash].js',
+            entryFileNames: 'jse/index-[name]-[hash].js',
           },
         },
+        target: 'es2015',
       },
-      css: {
-        preprocessorOptions: {
-          less: {
-            modifyVars: generateModifyVars(),
-            javascriptEnabled: true,
-          },
-        },
+      css: createCssOptions(injectGlobalScss),
+      esbuild: {
+        drop: isBuild
+          ? [
+              // 'console',
+              'debugger',
+            ]
+          : [],
+        legalComments: 'none',
       },
       plugins,
+      server: {
+        host: true,
+        port,
+        warmup: {
+          // 预热文件
+          clientFiles: [
+            './index.html',
+            './src/bootstrap.ts',
+            './src/{views,layouts,router,store,api,adapter}/*',
+          ],
+        },
+      },
     };
 
-    const mergedConfig = mergeConfig(commonConfig(mode), applicationConfig);
-
-    return mergeConfig(mergedConfig, overrides);
+    const mergedCommonConfig = mergeConfig(
+      await getCommonConfig(),
+      applicationConfig,
+    );
+    return mergeConfig(mergedCommonConfig, vite);
   });
 }
 
-async function createDefineData(root: string) {
-  try {
-    const pkgJson = await readPackageJSON(root);
-    const { dependencies, devDependencies, name, version } = pkgJson;
-
-    const __APP_INFO__ = {
-      pkg: { dependencies, devDependencies, name, version },
-      lastBuildTime: dayjs().format('YYYY-MM-DD HH:mm:ss'),
-    };
-    return {
-      __APP_INFO__: JSON.stringify(__APP_INFO__),
-    };
-  } catch (error) {
-    return {};
-  }
+function createCssOptions(injectGlobalScss = true): CSSOptions {
+  const root = findMonorepoRoot();
+  return {
+    preprocessorOptions: injectGlobalScss
+      ? {
+          scss: {
+            additionalData: (content: string, filepath: string) => {
+              const relativePath = relative(root, filepath);
+              // apps下的包注入全局样式
+              if (relativePath.startsWith(`apps${path.sep}`)) {
+                return `@use "@vben/styles/global" as *;\n${content}`;
+              }
+              return content;
+            },
+            api: 'modern',
+            importers: [new NodePackageImporter()],
+          },
+        }
+      : {},
+  };
 }
 
 export { defineApplicationConfig };

@@ -1,17 +1,18 @@
 dist
+dev-dist
 .local
 .output.js
 node_modules
+.nvmrc
+coverage
+CODEOWNERS
+.nitro
+.output
+
 
 **/*.svg
 **/*.sh
 
 public
 .npmrc
-
-internal/**/dist
-
-deploy
-docs
-docker
-mock
+*-lock.yaml
