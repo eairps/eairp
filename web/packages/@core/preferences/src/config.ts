@@ -10,7 +10,7 @@ const defaultPreferences: Preferences = {
     compact: false,
     contentCompact: 'wide',
     defaultAvatar:
-      'https://simpleadmin-2024.oss-cn-shanghai.aliyuncs.com/logo.png',
+      'https://eairp-1317413588.cos.ap-hongkong.myqcloud.com/logo.png',
     dynamicTitle: true,
     enableCheckUpdates: true,
     enablePreferences: true,
@@ -51,7 +51,7 @@ const defaultPreferences: Preferences = {
   },
   logo: {
     enable: true,
-    source: `https://simpleadmin-2024.oss-cn-shanghai.aliyuncs.com/logo.png`,
+    source: `https://eairp-1317413588.cos.ap-hongkong.myqcloud.com/logo.png`,
   },
   navigation: {
     accordion: true,
