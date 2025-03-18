@@ -30,15 +30,15 @@ async function viteLicensePlugin(
       handler: (_options: NormalizedOutputOptions, bundle: OutputBundle) => {
         const date = dateUtil().format('YYYY-MM-DD ');
         const copyrightText = `/*!
-  * Simple Admin
+  * EAIRP
   * Version: ${version}
-  * Author: Ryan SU
-  * Copyright (C) 2024 Simple Admin
+  * Author: EAIRP Team
+  * Copyright (C) 2025 EAIRP
   * License: Apache2.0 License
   * Description: ${description}
   * Date Created: ${date}
   * Homepage: ${homepage}
-  * Contact: yuansu.china.work@gmail.com
+  * Contact: geekzow@gmail.com
 */
               `.trim();
 

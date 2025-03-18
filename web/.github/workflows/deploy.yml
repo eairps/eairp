@@ -74,9 +74,9 @@ jobs:
       - name: Sed Config Base
         shell: bash
         run: |
-          sed -i  "s#VITE_COMPRESS\s*=.*#VITE_COMPRESS = gzip#g" ./apps/simple-admin-core/.env.production
-          sed -i  "s#VITE_PWA\s*=.*#VITE_PWA = true#g" ./apps/simple-admin-core/.env.production
-          cat ./apps/simple-admin-core/.env.production
+          sed -i  "s#VITE_COMPRESS\s*=.*#VITE_COMPRESS = gzip#g" ./apps/eairp-web-core/.env.production
+          sed -i  "s#VITE_PWA\s*=.*#VITE_PWA = true#g" ./apps/eairp-web-core/.env.production
+          cat ./apps/eairp-web-core/.env.production
 
       - name: Setup Node
         uses: ./.github/actions/setup-node
@@ -90,7 +90,7 @@ jobs:
           server: ${{ secrets.PRO_FTP_HOST }}
           username: ${{ secrets.WEB_ANTD_FTP_ACCOUNT }}
           password: ${{ secrets.WEB_ANTD_FTP_PASSWORD }}
-          local-dir: ./apps/simple-admin-core/dist/
+          local-dir: ./apps/eairp-web-core/dist/
 
   deploy-ele-ftp:
     name: Deploy Push Element Ftp

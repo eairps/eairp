@@ -12,9 +12,9 @@ defineOptions({
 });
 
 withDefaults(defineProps<Props>(), {
-  companyName: 'Simple Admin',
+  companyName: 'EAIRP Team',
   companySiteLink: '',
-  date: '2024',
+  date: '2023-2025',
   icp: '',
   icpLink: '',
 });
