@@ -52,6 +52,7 @@
     "@wangeditor-next/editor-for-vue": "catalog:",
     "ant-design-vue": "catalog:",
     "dayjs": "catalog:",
+    "less": "^4.2.2",
     "pinia": "catalog:",
     "remeda": "catalog:",
     "vue": "catalog:",
