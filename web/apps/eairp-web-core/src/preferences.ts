@@ -10,12 +10,12 @@ export const overridesPreferences = defineOverridesPreferences({
   app: {
     name: import.meta.env.VITE_APP_TITLE,
     defaultAvatar:
-      'https://simpleadmin-2024.oss-cn-shanghai.aliyuncs.com/logo.png',
+      'https://eairp-1317413588.cos.ap-hongkong.myqcloud.com/logo.png',
     accessMode: 'backend',
   },
   logo: {
     enable: true,
-    source: 'https://simpleadmin-2024.oss-cn-shanghai.aliyuncs.com/logo.png',
+    source: 'https://eairp-1317413588.cos.ap-hongkong.myqcloud.com/logo.png',
   },
   tabbar: {
     keepAlive: true,

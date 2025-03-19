@@ -114,7 +114,7 @@ export const useDynamicConfigStore = defineStore('dynamic-config', {
             enable: true,
             source:
               this.systemLogo === ''
-                ? 'https://simpleadmin-2024.oss-cn-shanghai.aliyuncs.com/logo.png'
+                ? 'https://eairp-1317413588.cos.ap-hongkong.myqcloud.com/logo.png'
                 : this.systemLogo,
           },
           breadcrumb: {
