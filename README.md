@@ -141,7 +141,7 @@ Licensed under either of
 at your option.
 
 ## Community
-<img src="images/wechat-group-20250306.jpg" alt="WeChat Group" width="300" />
+<img src="images/wechat-group-20250318.jpg" alt="WeChat Group" width="300" />
 
 ## Contribution
 We welcome every contributor, both in terms of code and documentation.
