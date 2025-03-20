@@ -1,6 +1,6 @@
 export interface CaptchaResp {
   captchaId: string;
-  imgPath: string;
+  imagePath: string;
 }
 
 export interface GetEmailCaptchaReq {
