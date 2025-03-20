@@ -14,12 +14,8 @@ package com.wansenai.api;
 
 
 public class RateLimitException extends RuntimeException {
-    private String errorCode;
-    private String errorMessage;
 
-    public RateLimitException(String errorCode, String errorMessage) {
+    public RateLimitException(int errorCode, String errorMessage) {
         super(errorMessage);
-        this.errorCode = errorCode;
-        this.errorMessage = errorMessage;
     }
 }

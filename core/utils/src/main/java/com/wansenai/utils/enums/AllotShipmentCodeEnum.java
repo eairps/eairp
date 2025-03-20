@@ -17,41 +17,41 @@ import lombok.Getter;
 @Getter
 public enum AllotShipmentCodeEnum {
 
-    ADD_ALLOT_SHIPMENT_STOCK_RECEIPT_SUCCESS("S0010", "成功添加调拨出库单据"),
+    ADD_ALLOT_SHIPMENT_STOCK_RECEIPT_SUCCESS(200, "成功添加调拨出库单据"),
 
-    ADD_ALLOT_SHIPMENT_STOCK_RECEIPT_SUCCESS_EN("S0010", "Successfully add transfer outbound document"),
+    ADD_ALLOT_SHIPMENT_STOCK_RECEIPT_SUCCESS_EN(200, "Successfully add transfer outbound document"),
 
-    ADD_ALLOT_SHIPMENT_STOCK_RECEIPT_ERROR("S0509", "系统异常，添加调拨出库单据失败"),
+    ADD_ALLOT_SHIPMENT_STOCK_RECEIPT_ERROR(500, "系统异常，添加调拨出库单据失败"),
 
-    ADD_ALLOT_SHIPMENT_STOCK_RECEIPT_ERROR_EN("S0509", "System exception, failed to add transfer outbound document"),
+    ADD_ALLOT_SHIPMENT_STOCK_RECEIPT_ERROR_EN(500, "System exception, failed to add transfer outbound document"),
 
-    UPDATE_ALLOT_SHIPMENT_STOCK_RECEIPT_SUCCESS("S0011", "成功修改调拨出库单据"),
+    UPDATE_ALLOT_SHIPMENT_STOCK_RECEIPT_SUCCESS(200, "成功修改调拨出库单据"),
 
-    UPDATE_ALLOT_SHIPMENT_STOCK_RECEIPT_SUCCESS_EN("S0011", "Successfully modify transfer outbound document"),
+    UPDATE_ALLOT_SHIPMENT_STOCK_RECEIPT_SUCCESS_EN(200, "Successfully modify transfer outbound document"),
 
-    UPDATE_ALLOT_SHIPMENT_STOCK_RECEIPT_ERROR("S0510", "系统异常，修改调拨出库单据失败"),
+    UPDATE_ALLOT_SHIPMENT_STOCK_RECEIPT_ERROR(500, "系统异常，修改调拨出库单据失败"),
 
-    UPDATE_ALLOT_SHIPMENT_STOCK_RECEIPT_ERROR_EN("S0510", "System exception, failed to modify transfer outbound document"),
+    UPDATE_ALLOT_SHIPMENT_STOCK_RECEIPT_ERROR_EN(500, "System exception, failed to modify transfer outbound document"),
 
-    DELETE_ALLOT_SHIPMENT_STOCK_RECEIPT_SUCCESS("S0012", "成功删除调拨出库单据"),
+    DELETE_ALLOT_SHIPMENT_STOCK_RECEIPT_SUCCESS(200, "成功删除调拨出库单据"),
 
-    DELETE_ALLOT_SHIPMENT_STOCK_RECEIPT_SUCCESS_EN("S0012", "Successfully delete transfer outbound document"),
+    DELETE_ALLOT_SHIPMENT_STOCK_RECEIPT_SUCCESS_EN(200, "Successfully delete transfer outbound document"),
 
-    DELETE_ALLOT_SHIPMENT_STOCK_RECEIPT_ERROR("S0511", "系统异常，删除调拨出库单据失败"),
+    DELETE_ALLOT_SHIPMENT_STOCK_RECEIPT_ERROR(500, "系统异常，删除调拨出库单据失败"),
 
-    DELETE_ALLOT_SHIPMENT_STOCK_RECEIPT_ERROR_EN("S0511", "System exception, failed to delete transfer outbound document");
+    DELETE_ALLOT_SHIPMENT_STOCK_RECEIPT_ERROR_EN(500, "System exception, failed to delete transfer outbound document");
 
     /**
      * 响应状态码
      */
-    private final String code;
+    private final int code;
 
     /**
      * 响应提示
      */
     private final String msg;
 
-    AllotShipmentCodeEnum(String code, String msg) {
+    AllotShipmentCodeEnum(int code, String msg) {
         this.code = code;
         this.msg = msg;
     }

@@ -23,59 +23,59 @@ import lombok.Getter;
 public enum BaseCodeEnum {
 
     // 一级基本宏观状态码
-    SUCCESS("00000", "系统执行成功"),
+    SUCCESS(200, "系统执行成功"),
 
-    ERROR("B0001", "系统执行出错"),
+    ERROR(500, "服务器错误"),
 
-    QUERY_DATA_EMPTY("A0404", "查询数据不存在"),
+    QUERY_DATA_EMPTY(200, "查询数据不存在"),
 
-    PARAMETER_NULL("A0410","请求必填参数为空"),
+    PARAMETER_NULL(400,"请求必填参数为空"),
 
-    VERIFY_CODE_ERROR("A0240", "验证码错误"),
+    VERIFY_CODE_ERROR(200, "验证码错误"),
 
-    VERIFY_CODE_EXPIRE("A0242", "验证码已过期"),
+    VERIFY_CODE_EXPIRE(200, "验证码已过期"),
 
-    SMS_VERIFY_CODE_EXPIRE("A0243", "短信校验码已过期"),
+    SMS_VERIFY_CODE_EXPIRE(200, "短信校验码已过期"),
 
-    SMS_VERIFY_SEND_SUCCESS("A0100", "短信验证码发送成功"),
+    SMS_VERIFY_SEND_SUCCESS(200, "短信验证码发送成功"),
 
-    SMS_VERIFY_CODE_ERROR("A0131", "短信校验码错误"),
+    SMS_VERIFY_CODE_ERROR(500, "短信校验码错误"),
 
-    EMAIL_VERIFY_CODE_EXPIRE("A0244", "邮箱验证码已过期"),
+    EMAIL_VERIFY_CODE_EXPIRE(200, "邮箱验证码已过期"),
 
-    EMAIL_VERIFY_SEND_SUCCESS("A0101", "邮箱验证码发送成功"),
+    EMAIL_VERIFY_SEND_SUCCESS(200, "邮箱验证码发送成功"),
 
-    EMAIL_VERIFY_CODE_ERROR("A0132", "邮箱验证码错误"),
+    EMAIL_VERIFY_CODE_ERROR(500, "邮箱验证码错误"),
 
-    PHONE_NUMBER_FORMAT_ERROR("A0131", "手机格式校验失败"),
+    PHONE_NUMBER_FORMAT_ERROR(500, "手机格式校验失败"),
 
-    FILE_UPLOAD_ERROR("A0500", "文件上传失败"),
+    FILE_UPLOAD_ERROR(500, "文件上传失败"),
 
-    FILE_UPLOAD_ERROR_EN("A0500", "File upload failed"),
+    FILE_UPLOAD_ERROR_EN(500, "File upload failed"),
 
-    FILE_UPLOAD_NO_FILENAME_MATCH("A0501", "文件上传失败，文件名不匹配"),
+    FILE_UPLOAD_NO_FILENAME_MATCH(500, "文件上传失败，文件名不匹配"),
 
-    OSS_KEY_NOT_EXIST("T0500", "腾讯云OSS对象存储key不存在"),
+    OSS_KEY_NOT_EXIST(500, "腾讯云OSS对象存储key不存在"),
 
-    OSS_GET_INSTANCE_ERROR("T0501", "腾讯云OSS对象存储实例获取失败"),
+    OSS_GET_INSTANCE_ERROR(500, "腾讯云OSS对象存储实例获取失败"),
 
-    SNOWFLAKE_ID_GENERATE_ERROR("B0009", "雪花算法生成ID失败"),
+    SNOWFLAKE_ID_GENERATE_ERROR(500, "雪花算法生成ID失败"),
 
-    FREQUENT_SYSTEM_ACCESS("B0010", "系统请求过于频繁，请稍后再试"),
+    FREQUENT_SYSTEM_ACCESS(502, "系统请求过于频繁，请稍后再试"),
 
-    SYSTEM_BUSY("B0020", "系统繁忙，请稍后再试");
+    SYSTEM_BUSY(502, "系统繁忙，请稍后再试");
 
     /**
      * 响应状态码
      */
-    private final String code;
+    private final int code;
 
     /**
      * 响应提示
      */
     private final String msg;
 
-    BaseCodeEnum(String code, String msg) {
+    BaseCodeEnum(int code, String msg) {
         this.code = code;
         this.msg = msg;
     }

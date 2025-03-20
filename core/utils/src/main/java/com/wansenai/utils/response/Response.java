@@ -28,7 +28,7 @@ public class Response<T> implements Serializable {
 
     private String msg;
 
-    private String code;
+    private int code;
 
     private T data;
 
@@ -208,7 +208,7 @@ public class Response<T> implements Serializable {
         return baseResponse;
     }
 
-    public static <T> Response<T> responseMsg(String code, String msg) {
+    public static <T> Response<T> responseMsg(int code, String msg) {
         Response<T> baseResponse = new Response<T>();
         baseResponse.setCode(code);
         baseResponse.setMsg(msg);
@@ -222,7 +222,7 @@ public class Response<T> implements Serializable {
         return baseResponse;
     }
 
-    public static <T> Response<T> responseData(String code, T data) {
+    public static <T> Response<T> responseData(int code, T data) {
         Response<T> baseResponse = new Response<T>();
         baseResponse.setCode(code);
         baseResponse.setData(data);
