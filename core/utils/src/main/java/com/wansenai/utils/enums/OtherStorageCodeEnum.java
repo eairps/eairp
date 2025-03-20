@@ -17,41 +17,41 @@ import lombok.Getter;
 @Getter
 public enum OtherStorageCodeEnum {
 
-    ADD_OTHER_STORAGE_STOCK_SUCCESS("S0016", "成功添加入库单据"),
+    ADD_OTHER_STORAGE_STOCK_SUCCESS(200, "成功添加入库单据"),
 
-    ADD_OTHER_STORAGE_STOCK_SUCCESS_EN("S0016", "Successfully add warehousing document"),
+    ADD_OTHER_STORAGE_STOCK_SUCCESS_EN(200, "Successfully add warehousing document"),
 
-    ADD_OTHER_STORAGE_STOCK_ERROR("S0515", "系统异常，添加入库单据失败"),
+    ADD_OTHER_STORAGE_STOCK_ERROR(500, "系统异常，添加入库单据失败"),
 
-    ADD_OTHER_STORAGE_STOCK_ERROR_EN("S0515", "System exception, failed to add warehousing document"),
+    ADD_OTHER_STORAGE_STOCK_ERROR_EN(500, "System exception, failed to add warehousing document"),
 
-    UPDATE_OTHER_STORAGE_STOCK_SUCCESS("S0017", "成功修改入库单据"),
+    UPDATE_OTHER_STORAGE_STOCK_SUCCESS(200, "成功修改入库单据"),
 
-    UPDATE_OTHER_STORAGE_STOCK_SUCCESS_EN("S0017", "Successfully modify warehousing document"),
+    UPDATE_OTHER_STORAGE_STOCK_SUCCESS_EN(200, "Successfully modify warehousing document"),
 
-    UPDATE_OTHER_STORAGE_STOCK_ERROR("S0516", "系统异常，修改入库单据失败"),
+    UPDATE_OTHER_STORAGE_STOCK_ERROR(500, "系统异常，修改入库单据失败"),
 
-    UPDATE_OTHER_STORAGE_STOCK_ERROR_EN("S0516", "System exception, failed to modify warehousing document"),
+    UPDATE_OTHER_STORAGE_STOCK_ERROR_EN(500, "System exception, failed to modify warehousing document"),
 
-    DELETE_OTHER_STORAGE_STOCK_SUCCESS("S0018", "成功删除入库单据"),
+    DELETE_OTHER_STORAGE_STOCK_SUCCESS(200, "成功删除入库单据"),
 
-    DELETE_OTHER_STORAGE_STOCK_SUCCESS_EN("S0018", "Successfully delete warehousing document"),
+    DELETE_OTHER_STORAGE_STOCK_SUCCESS_EN(200, "Successfully delete warehousing document"),
 
-    DELETE_OTHER_STORAGE_STOCK_ERROR("S0517", "系统异常，删除入库单据失败"),
+    DELETE_OTHER_STORAGE_STOCK_ERROR(500, "系统异常，删除入库单据失败"),
 
-    DELETE_OTHER_STORAGE_STOCK_ERROR_EN("S0517", "System exception, failed to delete warehousing document");
+    DELETE_OTHER_STORAGE_STOCK_ERROR_EN(500, "System exception, failed to delete warehousing document");
 
     /**
      * 响应状态码
      */
-    private final String code;
+    private final int code;
 
     /**
      * 响应提示
      */
     private final String msg;
 
-    OtherStorageCodeEnum(String code, String msg) {
+    OtherStorageCodeEnum(int code, String msg) {
         this.code = code;
         this.msg = msg;
     }

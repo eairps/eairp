@@ -17,41 +17,41 @@ import lombok.Getter;
 @Getter
 public enum DisassembleReceiptCodeEnum {
 
-    ADD_DISASSEMBLE_RECEIPT_SUCCESS("D0001", "成功添加拆卸单据"),
+    ADD_DISASSEMBLE_RECEIPT_SUCCESS(200, "成功添加拆卸单据"),
 
-    ADD_DISASSEMBLE_RECEIPT_SUCCESS_EN("D0001", "Successfully add disassembly documents"),
+    ADD_DISASSEMBLE_RECEIPT_SUCCESS_EN(200, "Successfully add disassembly documents"),
 
-    ADD_DISASSEMBLE_RECEIPT_ERROR("D0500", "系统异常，添加拆卸单据失败"),
+    ADD_DISASSEMBLE_RECEIPT_ERROR(500, "系统异常，添加拆卸单据失败"),
 
-    ADD_DISASSEMBLE_RECEIPT_ERROR_EN("D0500", "System exception, failed to add disassembly documents"),
+    ADD_DISASSEMBLE_RECEIPT_ERROR_EN(500, "System exception, failed to add disassembly documents"),
 
-    UPDATE_DISASSEMBLE_RECEIPT_SUCCESS("D0002", "成功修改拆卸单据"),
+    UPDATE_DISASSEMBLE_RECEIPT_SUCCESS(200, "成功修改拆卸单据"),
 
-    UPDATE_DISASSEMBLE_RECEIPT_SUCCESS_EN("D0002", "Successfully modify disassembly documents"),
+    UPDATE_DISASSEMBLE_RECEIPT_SUCCESS_EN(200, "Successfully modify disassembly documents"),
 
-    UPDATE_DISASSEMBLE_RECEIPT_ERROR("D0501", "系统异常，修改拆卸单据失败"),
+    UPDATE_DISASSEMBLE_RECEIPT_ERROR(500, "系统异常，修改拆卸单据失败"),
 
-    UPDATE_DISASSEMBLE_RECEIPT_ERROR_EN("D0501", "System exception, failed to modify disassembly documents"),
+    UPDATE_DISASSEMBLE_RECEIPT_ERROR_EN(500, "System exception, failed to modify disassembly documents"),
 
-    DELETE_DISASSEMBLE_RECEIPT_SUCCESS("D0003", "成功删除拆卸单据"),
+    DELETE_DISASSEMBLE_RECEIPT_SUCCESS(200, "成功删除拆卸单据"),
 
-    DELETE_DISASSEMBLE_RECEIPT_SUCCESS_EN("D0003", "Successfully delete disassembly documents"),
+    DELETE_DISASSEMBLE_RECEIPT_SUCCESS_EN(200, "Successfully delete disassembly documents"),
 
-    DELETE_DISASSEMBLE_RECEIPT_ERROR("D0502", "系统异常，删除拆卸单据失败"),
+    DELETE_DISASSEMBLE_RECEIPT_ERROR(500, "系统异常，删除拆卸单据失败"),
 
-    DELETE_DISASSEMBLE_RECEIPT_ERROR_EN("D0502", "System exception, failed to delete disassembly documents");
+    DELETE_DISASSEMBLE_RECEIPT_ERROR_EN(500, "System exception, failed to delete disassembly documents");
 
     /**
      * 响应状态码
      */
-    private final String code;
+    private final int code;
 
     /**
      * 响应提示
      */
     private final String msg;
 
-    DisassembleReceiptCodeEnum(String code, String msg) {
+    DisassembleReceiptCodeEnum(int code, String msg) {
         this.code = code;
         this.msg = msg;
     }

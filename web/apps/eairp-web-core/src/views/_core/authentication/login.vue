@@ -32,7 +32,7 @@ const loginType: BasicOption[] = [
   },
 ];
 
-const imgPath = ref<string>('');
+const imagePath = ref<string>('');
 const captchaId = ref<string>('');
 const msgType = ref<string>('');
 const target = ref<string>('');
@@ -40,9 +40,9 @@ const target = ref<string>('');
 // get captcha
 async function getCaptchaData() {
   const captcha = await getCaptcha();
-  if (captcha.code === 0) {
+  if (captcha.code === 200) {
     captchaId.value = captcha.data.captchaId;
-    imgPath.value = captcha.data.imgPath;
+    imagePath.value = captcha.data.imagePath;
   }
 }
 
@@ -157,7 +157,7 @@ const formSchema = computed((): VbenFormSchema[] => {
       fieldName: 'captchaImg',
       component: h(Image),
       componentProps: {
-        src: imgPath.value,
+        src: imagePath.value,
         width: 120,
         height: 40,
         preview: false,

@@ -20,23 +20,23 @@ public class EnumTest {
     @Test
     public void retailCodeEnumTest() {
         RetailCodeEnum successEnum = RetailCodeEnum.ADD_RETAIL_SHIPMENTS_SUCCESS;
-        assertEquals("R0001", successEnum.getCode());
+        assertEquals(200, successEnum.getCode());
         assertEquals("成功添加零售出库单据", successEnum.getMsg());
 
         RetailCodeEnum errorEnum = RetailCodeEnum.ADD_RETAIL_SHIPMENTS_ERROR;
-        assertEquals("R0500", errorEnum.getCode());
+        assertEquals(500, errorEnum.getCode());
         assertEquals("系统异常，添加零售出库单据失败", errorEnum.getMsg());
 
         RetailCodeEnum updateEnum = RetailCodeEnum.UPDATE_RETAIL_SHIPMENTS_ERROR;
-        assertEquals("R0501", updateEnum.getCode());
+        assertEquals(500, updateEnum.getCode());
         assertEquals("系统异常，修改零售出库单据失败", updateEnum.getMsg());
 
         RetailCodeEnum deleteSuccessEnum = RetailCodeEnum.DELETE_RETAIL_SHIPMENTS_SUCCESS;
-        assertEquals("R0003", deleteSuccessEnum.getCode());
+        assertEquals(200, deleteSuccessEnum.getCode());
         assertEquals("成功删除零售出库单据", deleteSuccessEnum.getMsg());
 
         RetailCodeEnum deleteErrorEnum = RetailCodeEnum.DELETE_RETAIL_SHIPMENTS_ERROR_EN;
-        assertEquals("R0502", deleteErrorEnum.getCode());
+        assertEquals(500, deleteErrorEnum.getCode());
         assertEquals("System exception, failed to delete retail outbound document", deleteErrorEnum.getMsg());
     }
 }

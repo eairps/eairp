@@ -6,10 +6,10 @@ export default defineConfig(async () => {
     vite: {
       server: {
         proxy: {
-          '/api': {
+          '/erp-api': {
             changeOrigin: true,
-            rewrite: (path) => path.replace(/^\/api/, ''),
-            target: 'http://localhost:8088/',
+            rewrite: (path) => path.replace(/^\/erp-api/, ''),
+            target: 'http://localhost:8088/erp-api',
             ws: true,
           },
         },
