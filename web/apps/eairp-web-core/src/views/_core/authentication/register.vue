@@ -236,7 +236,7 @@ async function handleRegister(values: any) {
           if (data.code === 0) {
             message.info($t('sys.login.signupSuccessTitle'));
             router.push('/auth/login');
-          } else if (data.code !== 0) {
+          } else if (data.code !== 200) {
             getCaptchaData();
           }
         })
@@ -260,7 +260,7 @@ async function handleRegister(values: any) {
           if (data.code === 0) {
             message.info($t('sys.login.signupSuccessTitle'));
             router.push('/auth/login');
-          } else if (data.code !== 0) {
+          } else if (data.code !== 200) {
             getCaptchaData();
           }
         })
@@ -284,7 +284,7 @@ async function handleRegister(values: any) {
           if (data.code === 0) {
             message.info($t('sys.login.signupSuccessTitle'));
             router.push('/auth/login');
-          } else if (data.code !== 0) {
+          } else if (data.code !== 200) {
             getCaptchaData();
           }
         })
